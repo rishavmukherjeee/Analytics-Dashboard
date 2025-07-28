@@ -2,7 +2,7 @@
 
 A modern, AI-powered analytics dashboard built for digital marketing agencies. This project showcases rapid development using cutting-edge AI tools while maintaining beautiful UI design and robust functionality.
 
-![Dashboard Preview](https://freeimage.host/i/FvybNMN)
+![Dashboard Preview]([(https://iili.io/FvybNMN.th.png)](https://freeimage.host/i/FvybNMN))
 
 ## 🚀 Live Demo
 
