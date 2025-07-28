@@ -21,7 +21,10 @@ const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({
   cx, cy, midAngle, innerRadius, outerRadius, percent
 }: any) => {
-  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+  // Only show label if percentage is above 3% to avoid overcrowding
+  if (percent < 0.03) return null;
+  
+  const radius = innerRadius + (outerRadius - innerRadius) * 0.6;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
   const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
@@ -30,9 +33,9 @@ const renderCustomizedLabel = ({
       x={x} 
       y={y} 
       fill="white" 
-      textAnchor={x > cx ? 'start' : 'end'} 
+      textAnchor="middle"
       dominantBaseline="central"
-      className="text-xs font-semibold"
+      className="text-xs font-bold drop-shadow-lg"
     >
       {`${(percent * 100).toFixed(0)}%`}
     </text>
@@ -78,9 +81,9 @@ export function PlatformChart() {
           : 'col-span-2'
       }`}>
       <CardHeader className="pb-4">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <div className="space-y-1">
-            <CardTitle className="text-xl font-semibold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+            <CardTitle className="text-lg md:text-xl font-semibold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
               Traffic Sources
             </CardTitle>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -89,7 +92,7 @@ export function PlatformChart() {
             </div>
           </div>
           
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 justify-end md:justify-start">
             <Button variant="ghost" size="icon" className="h-8 w-8 hidden md:flex" onClick={toggleFullscreen}>
               {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
             </Button>
@@ -101,7 +104,7 @@ export function PlatformChart() {
       </CardHeader>
       
       <CardContent className="pb-6">
-        <ResponsiveContainer width="100%" height={isFullscreen ? 450 : 350}>
+        <ResponsiveContainer width="100%" height={isFullscreen ? 450 : 320}>
           <PieChart>
             <Pie
               data={platformData}
@@ -109,8 +112,8 @@ export function PlatformChart() {
               cy="50%"
               labelLine={false}
               label={renderCustomizedLabel}
-              outerRadius={isFullscreen ? 180 : 120}
-              innerRadius={isFullscreen ? 90 : 60}
+              outerRadius={isFullscreen ? 180 : 110}
+              innerRadius={isFullscreen ? 90 : 55}
               paddingAngle={2}
               dataKey="value"
             >
@@ -147,16 +150,6 @@ export function PlatformChart() {
                 }
                 return null;
               }}
-            />
-            <Legend
-              verticalAlign="bottom"
-              height={36}
-              formatter={(value, entry) => (
-                <span className="text-sm text-muted-foreground font-medium">
-                  {value}
-                </span>
-              )}
-              iconType="circle"
             />
           </PieChart>
         </ResponsiveContainer>

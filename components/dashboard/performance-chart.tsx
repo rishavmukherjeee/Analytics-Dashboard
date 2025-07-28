@@ -63,9 +63,9 @@ export function PerformanceChart() {
           : 'col-span-3'
       }`}>
       <CardHeader className="pb-4">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <div className="space-y-1">
-            <CardTitle className="text-xl font-semibold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+            <CardTitle className="text-lg md:text-xl font-semibold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
               Performance Metrics
             </CardTitle>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -74,7 +74,7 @@ export function PerformanceChart() {
             </div>
           </div>
           
-          <div className="flex items-center gap-2">
+          <div className="flex flex-col gap-3 md:flex-row md:items-center md:gap-2">
             <div className="flex items-center bg-muted/50 rounded-lg p-1">
               {metrics.map((m) => (
                 <Button
@@ -82,39 +82,46 @@ export function PerformanceChart() {
                   variant={metric === m.value ? "default" : "ghost"}
                   size="sm"
                   onClick={() => setMetric(m.value)}
-                  className="h-7 px-3 text-xs transition-all duration-200"
+                  className="h-7 px-3 text-xs transition-all duration-200 flex-1 md:flex-none"
                 >
                   {m.label}
                 </Button>
               ))}
             </div>
-            <Button variant="ghost" size="icon" className="h-8 w-8 hidden md:flex" onClick={toggleFullscreen}>
-              {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
-            </Button>
-            <Button variant="ghost" size="icon" className="h-8 w-8" onClick={handleDownload}>
-              <Download className="h-4 w-4" />
-            </Button>
+            <div className="flex items-center gap-2 justify-end md:justify-start">
+              <Button variant="ghost" size="icon" className="h-8 w-8 hidden md:flex" onClick={toggleFullscreen}>
+                {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
+              </Button>
+              <Button variant="ghost" size="icon" className="h-8 w-8" onClick={handleDownload}>
+                <Download className="h-4 w-4" />
+              </Button>
+            </div>
           </div>
         </div>
       </CardHeader>
       
       <CardContent className="pb-6">
-        <ResponsiveContainer width="100%" height={isFullscreen ? 450 : 350}>
-          <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+        <ResponsiveContainer width="100%" height={isFullscreen ? 450 : 280}>
+          <BarChart data={data} margin={{ top: 20, right: 15, left: 10, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" className="opacity-20" />
             <XAxis
               dataKey="name"
               axisLine={false}
               tickLine={false}
               className="text-sm"
-              tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }}
+              tick={{ fontSize: 10, fill: 'hsl(var(--muted-foreground))' }}
+              interval={0}
+              angle={-45}
+              textAnchor="end"
+              height={50}
             />
             <YAxis
               axisLine={false}
               tickLine={false}
               className="text-sm"
-              tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }}
+              tick={{ fontSize: 10, fill: 'hsl(var(--muted-foreground))' }}
               tickFormatter={(value) => `${value / 1000}k`}
+              width={40}
             />
             <Tooltip
               content={({ active, payload, label }) => {

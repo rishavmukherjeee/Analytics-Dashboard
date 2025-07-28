@@ -78,20 +78,22 @@ export function RevenueChart() {
         : 'col-span-4'
     }`}>
       <CardHeader className="pb-4">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
           <div className="space-y-1">
-            <CardTitle className="text-xl font-semibold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+            <CardTitle className="text-lg md:text-xl font-semibold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
               Revenue Overview
             </CardTitle>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <TrendingUp className="h-4 w-4 text-emerald-500" />
-              <span>Total: ${totalRevenue.toLocaleString()}</span>
-              <span>•</span>
+            <div className="flex flex-col gap-1 md:flex-row md:items-center md:gap-2 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2">
+                <TrendingUp className="h-4 w-4 text-emerald-500" />
+                <span>Total: ${totalRevenue.toLocaleString()}</span>
+              </div>
+              <span className="hidden md:inline">•</span>
               <span>Avg: ${Math.round(avgRevenue).toLocaleString()}/month</span>
             </div>
           </div>
           
-          <div className="flex items-center gap-2">
+          <div className="flex flex-col gap-3 md:flex-row md:items-center md:gap-2">
             <div className="flex items-center bg-muted/50 rounded-lg p-1">
               {timeframes.map((tf) => (
                 <Button
@@ -99,27 +101,29 @@ export function RevenueChart() {
                   variant={timeframe === tf.value ? "default" : "ghost"}
                   size="sm"
                   onClick={() => setTimeframe(tf.value)}
-                  className="h-7 px-3 text-xs transition-all duration-200"
+                  className="h-7 px-3 text-xs transition-all duration-200 flex-1 md:flex-none"
                 >
                   {tf.label}
                 </Button>
               ))}
             </div>
-            {!isMobile && (
-              <Button variant="ghost" size="icon" className="h-8 w-8" onClick={toggleFullscreen}>
-                {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
+            <div className="flex items-center gap-2 justify-end md:justify-start">
+              {!isMobile && (
+                <Button variant="ghost" size="icon" className="h-8 w-8" onClick={toggleFullscreen}>
+                  {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
+                </Button>
+              )}
+              <Button variant="ghost" size="icon" className="h-8 w-8" onClick={handleDownload}>
+                <Download className="h-4 w-4" />
               </Button>
-            )}
-            <Button variant="ghost" size="icon" className="h-8 w-8" onClick={handleDownload}>
-              <Download className="h-4 w-4" />
-            </Button>
+            </div>
           </div>
         </div>
       </CardHeader>
       
       <CardContent className="pb-6">
-        <ResponsiveContainer width="100%" height={isFullscreen ? 600 : 350}>
-          <AreaChart data={data} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+        <ResponsiveContainer width="100%" height={isFullscreen ? 600 : 280}>
+          <AreaChart data={data} margin={{ top: 10, right: 15, left: 0, bottom: 0 }}>
             <defs>
               <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor="hsl(220, 90%, 56%)" stopOpacity={0.3} />
@@ -136,14 +140,19 @@ export function RevenueChart() {
               axisLine={false}
               tickLine={false}
               className="text-sm"
-              tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }}
+              tick={{ fontSize: 10, fill: 'hsl(var(--muted-foreground))' }}
+              interval={0}
+              angle={-45}
+              textAnchor="end"
+              height={50}
             />
             <YAxis
               axisLine={false}
               tickLine={false}
               className="text-sm"
-              tick={{ fontSize: 12, fill: 'hsl(var(--muted-foreground))' }}
+              tick={{ fontSize: 10, fill: 'hsl(var(--muted-foreground))' }}
               tickFormatter={(value) => `$${value / 1000}k`}
+              width={40}
             />
             <ReferenceLine 
               y={avgRevenue} 
@@ -178,9 +187,9 @@ export function RevenueChart() {
               stroke="url(#colorRevenueStroke)"
               fillOpacity={1}
               fill="url(#colorRevenue)"
-              strokeWidth={3}
-              dot={{ fill: 'hsl(220, 90%, 56%)', strokeWidth: 2, r: 4 }}
-              activeDot={{ r: 6, stroke: 'hsl(220, 90%, 56%)', strokeWidth: 2, fill: 'white' }}
+              strokeWidth={2}
+              dot={{ fill: 'hsl(220, 90%, 56%)', strokeWidth: 1, r: 3 }}
+              activeDot={{ r: 4, stroke: 'hsl(220, 90%, 56%)', strokeWidth: 2, fill: 'white' }}
             />
           </AreaChart>
         </ResponsiveContainer>
