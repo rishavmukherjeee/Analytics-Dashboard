@@ -2,11 +2,11 @@
 
 A modern, AI-powered analytics dashboard built for digital marketing agencies. This project showcases rapid development using cutting-edge AI tools while maintaining beautiful UI design and robust functionality.
 
-![Dashboard Preview](https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=600&fit=crop&crop=center)
+![Dashboard Preview](https://freeimage.host/i/FvybNMN?w=1200&h=600&fit=crop&crop=cente)
 
 ## 🚀 Live Demo
 
-**[View Live Dashboard](https://testt-dashboard.vercel.app)** *(Deploy your app and add the actual URL)*
+**[View Live Dashboard](https://analytics-dashboard-5jzsvhbxc-rishavmukherjeees-projects.vercel.app/)**
 
 ## ✨ Features
 
@@ -23,8 +23,8 @@ A modern, AI-powered analytics dashboard built for digital marketing agencies. T
 - **Professional Typography**: Clear hierarchy and modern font selection
 
 ### ⚡ Technical Excellence
-- **Next.js 14**: App Router with TypeScript for type safety
-- **shadcn/ui**: Modern component library with Tailwind CSS
+- **Next.js **: App Router with TypeScript for type safety
+- **radix ui**: Modern component library with Tailwind CSS
 - **Performance Optimized**: Lazy loading, code splitting, optimized images
 - **Mobile-First**: Touch-friendly interactions with proper spacing
 
@@ -36,7 +36,6 @@ This project demonstrates strategic AI utilization for rapid, high-quality devel
 - **Bolt.new**: Initial project scaffolding and basic dashboard structure generation
 - **GitHub Copilot**: Code completion and component enhancement (60% faster development)
 - **ChatGPT-4**: Architecture refinement, complex logic implementation
-- **v0.dev**: Advanced UI component generation and design system
 - **Claude**: Code review, optimization suggestions, and debugging
 
 ### Key AI Use Cases
@@ -50,7 +49,7 @@ This project demonstrates strategic AI utilization for rapid, high-quality devel
 
 ### 1. Project Scaffolding
 ```
-"Create a Next.js 14 analytics dashboard with TypeScript, Tailwind CSS, and shadcn/ui. 
+"Create a nalytics dashboard with TypeScript 
 Include basic routing structure, dashboard layout with sidebar, and placeholder 
 components for charts, tables, and metrics cards"
 ```
@@ -62,21 +61,14 @@ mode, CSV download, mobile responsive design, and includes a platform breakdown
 list with progress bars"
 ```
 
-### 3. Data Processing
-```
-"Implement pagination logic for a campaigns table with filtering by platform, 
-status, and date range, including TypeScript interfaces and realistic mock data 
-generation with 25+ campaign entries"
-```
-
 ## 🔧 Technology Stack
 
 ```json
 {
-  "Framework": "Next.js 14 (App Router)",
+  "Framework": "Next.js (App Router)",
   "Language": "TypeScript",
   "Styling": "Tailwind CSS",
-  "UI Library": "shadcn/ui",
+  "UI Library": "radix-ui",
   "Charts": "Recharts",
   "Icons": "Lucide React",
   "State Management": "React Hooks",
@@ -90,7 +82,6 @@ generation with 25+ campaign entries"
 |----------|--------------|---------------|---------------|
 | **Component Structure** | 70% | 20% | 10% |
 | **UI Design** | 40% | 30% | 30% |
-| **Business Logic** | 60% | 25% | 15% |
 | **Mobile Optimization** | 80% | 10% | 10% |
 | **Performance Features** | 75% | 15% | 10% |
 
@@ -137,42 +128,16 @@ http://localhost:3000
 - **Desktop**: Full-featured dashboard with sidebar navigation
 - **Tablet**: Collapsed navigation with touch-optimized interactions  
 - **Mobile**: Fullscreen disabled for charts, optimized spacing
-- **Cross-browser**: Tested on Chrome, Firefox, Safari, Edge
 
-## 🎯 Key Achievements
 
-### Performance Metrics
-- **Lighthouse Score**: 95+ across all categories
-- **First Contentful Paint**: < 1.2s
-- **Largest Contentful Paint**: < 2.5s
-- **Bundle Size**: Optimized with tree shaking
 
-### AI Productivity Gains
-- **Development Speed**: 3x faster than traditional coding
-- **Code Quality**: Consistent patterns with TypeScript safety
-- **Bug Reduction**: AI-assisted error handling and edge cases
-- **Responsive Design**: Automated mobile optimization
-
-### User Experience
-- **Smooth Animations**: 60fps interactions across devices
-- **Accessibility**: ARIA labels and keyboard navigation
-- **Professional Export**: PDF reports with summary statistics
-- **Data Visualization**: Interactive charts with hover states
-
-## 🔄 Future Enhancements
-
-- [ ] Real-time WebSocket data updates
-- [ ] Advanced dashboard customization
-- [ ] Team collaboration features
-- [ ] API integration capabilities
-- [ ] Enhanced analytics insights
 
 ## 📞 Contact
 
 **Developer**: Rishav Mukherjee  
 **Portfolio**: [rishavmukherjee.dev](https://rishavmukherjee.me)  
 **LinkedIn**: [linkedin.com/in/rishavmukherjee](https://linkedin.com/in/rishavmukherjeee)  
-**Email**: rishav@example.com
+**Email**: rishavmukherjee@gmail.com
 
 ---
 
