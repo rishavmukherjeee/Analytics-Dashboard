@@ -67,15 +67,7 @@ export function PerformanceChart() {
   };
 
   return (
-    <>
-      {isFullscreen && (
-        <div className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40" onClick={toggleFullscreen} />
-      )}
-      <Card className={`shadow-sm border-0 bg-gradient-to-br from-white to-emerald-50/30 dark:from-gray-900 dark:to-emerald-900/10 ${
-        isFullscreen 
-          ? 'fixed inset-2 sm:inset-4 z-50 col-span-1 overflow-auto max-h-screen' 
-          : 'col-span-3'
-      }`}>
+    <Card className="col-span-3 shadow-sm border-0 bg-gradient-to-br from-white to-emerald-50/30 dark:from-gray-900 dark:to-emerald-900/10">
       <CardHeader className="pb-4">
         <div className="flex items-center justify-between">
           <div className="space-y-1">
@@ -102,12 +94,10 @@ export function PerformanceChart() {
                 </Button>
               ))}
             </div>
-            {!isMobile && (
-              <Button variant="ghost" size="icon" className="h-8 w-8" onClick={toggleFullscreen}>
-                {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
-              </Button>
-            )}
-            <Button variant="ghost" size="icon" className="h-8 w-8" onClick={handleDownload}>
+            <Button variant="ghost" size="icon" className="h-8 w-8">
+              <Maximize2 className="h-4 w-4" />
+            </Button>
+            <Button variant="ghost" size="icon" className="h-8 w-8">
               <Download className="h-4 w-4" />
             </Button>
           </div>
@@ -115,7 +105,7 @@ export function PerformanceChart() {
       </CardHeader>
       
       <CardContent className="pb-6">
-        <ResponsiveContainer width="100%" height={isFullscreen ? (isMobile ? 400 : 500) : 350}>
+        <ResponsiveContainer width="100%" height={350}>
           <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" className="opacity-20" />
             <XAxis
@@ -182,6 +172,5 @@ export function PerformanceChart() {
         </ResponsiveContainer>
       </CardContent>
     </Card>
-    </>
   );
 }

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from "recharts";
 import { platformData } from "@/lib/mock-data";
 import { PieChart as PieChartIcon, Download, Maximize2, Minimize2 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const COLORS = [
   "hsl(220, 90%, 56%)",
@@ -13,6 +13,8 @@ const COLORS = [
   "hsl(30, 80%, 55%)",
   "hsl(280, 65%, 60%)",
   "hsl(340, 75%, 55%)",
+  "hsl(50, 70%, 60%)",
+  "hsl(200, 80%, 50%)",
 ];
 
 const RADIAN = Math.PI / 180;
@@ -39,19 +41,6 @@ const renderCustomizedLabel = ({
 
 export function PlatformChart() {
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
   const totalTraffic = platformData.reduce((sum, item) => sum + item.value, 0);
 
   const handleDownload = () => {
@@ -75,9 +64,7 @@ export function PlatformChart() {
   };
 
   const toggleFullscreen = () => {
-    if (!isMobile) {
-      setIsFullscreen(!isFullscreen);
-    }
+    setIsFullscreen(!isFullscreen);
   };
 
   return (
@@ -103,11 +90,9 @@ export function PlatformChart() {
           </div>
           
           <div className="flex items-center gap-2">
-            {!isMobile && (
-              <Button variant="ghost" size="icon" className="h-8 w-8" onClick={toggleFullscreen}>
-                {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
-              </Button>
-            )}
+            <Button variant="ghost" size="icon" className="h-8 w-8" onClick={toggleFullscreen}>
+              {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
+            </Button>
             <Button variant="ghost" size="icon" className="h-8 w-8" onClick={handleDownload}>
               <Download className="h-4 w-4" />
             </Button>
@@ -177,7 +162,7 @@ export function PlatformChart() {
         </ResponsiveContainer>
         
         {/* Platform breakdown */}
-        <div className="mt-4 space-y-2">
+        <div className="mt-6 space-y-2">
           {platformData.map((platform, index) => (
             <div key={platform.name} className="flex items-center justify-between text-sm">
               <div className="flex items-center gap-2">

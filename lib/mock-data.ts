@@ -23,7 +23,7 @@ export interface ChartDataPoint {
 export interface TableRow {
   id: string;
   campaign: string;
-  platform: string;
+  platform: 'Google Ads' | 'Facebook' | 'Instagram' | 'LinkedIn' | 'YouTube' | 'Email' | 'Spotify';
   impressions: number;
   clicks: number;
   ctr: number;
@@ -39,35 +39,35 @@ export interface TableRow {
 export const metricsData: MetricData[] = [
   {
     label: "Total Revenue",
-    value: "$847,302",
-    change: 12.5,
+    value: "$1,247,820",
+    change: 15.8,
     changeLabel: "vs last month",
     icon: "DollarSign",
-    trend: [65, 78, 82, 89, 95, 102, 108, 115, 122, 128, 135, 142]
+    trend: [65, 78, 82, 89, 95, 102, 108, 115, 122, 128, 135, 148]
   },
   {
     label: "Active Users",
-    value: "94,847",
-    change: 8.2,
+    value: "128,450",
+    change: 11.3,
     changeLabel: "vs last month",
     icon: "Users",
-    trend: [45, 52, 48, 61, 55, 67, 72, 69, 78, 82, 89, 94]
+    trend: [45, 52, 48, 61, 55, 67, 72, 69, 78, 82, 89, 102]
   },
   {
     label: "Conversions",
-    value: "12,483",
-    change: -2.1,
+    value: "18,967",
+    change: 8.7,
     changeLabel: "vs last month",
     icon: "Target",
-    trend: [15, 18, 16, 19, 17, 21, 23, 22, 25, 24, 26, 25]
+    trend: [15, 18, 16, 19, 17, 21, 23, 22, 25, 24, 26, 28]
   },
   {
     label: "Growth Rate",
-    value: "23.8%",
-    change: 5.4,
+    value: "31.2%",
+    change: 7.8,
     changeLabel: "vs last month",
     icon: "TrendingUp",
-    trend: [18, 19, 20, 22, 21, 23, 24, 25, 26, 24, 25, 24]
+    trend: [18, 19, 20, 22, 21, 23, 24, 25, 26, 24, 25, 29]
   }
 ];
 
@@ -87,11 +87,13 @@ export const revenueData: ChartDataPoint[] = [
 ];
 
 export const platformData: ChartDataPoint[] = [
-  { name: 'Google Ads', value: 45.2 },
-  { name: 'Facebook', value: 28.7 },
-  { name: 'Instagram', value: 12.8 },
-  { name: 'LinkedIn', value: 8.9 },
-  { name: 'Twitter', value: 4.4 }
+  { name: 'Google Ads', value: 38.5 },
+  { name: 'Facebook', value: 24.2 },
+  { name: 'Instagram', value: 15.3 },
+  { name: 'LinkedIn', value: 12.8 },
+  { name: 'YouTube', value: 4.7 },
+  { name: 'Email', value: 2.8 },
+  { name: 'Spotify', value: 1.7 }
 ];
 
 export const campaignData: TableRow[] = [
@@ -214,6 +216,261 @@ export const campaignData: TableRow[] = [
     startDate: '2024-10-01',
     endDate: '2024-12-31',
     roi: 273.7
+  },
+  {
+    id: '9',
+    campaign: 'Video Marketing Campaign',
+    platform: 'YouTube',
+    impressions: 125000,
+    clicks: 6250,
+    ctr: 5.0,
+    cost: 4500,
+    conversions: 312,
+    revenue: 18700,
+    status: 'active',
+    startDate: '2024-11-01',
+    endDate: '2024-12-31',
+    roi: 315.6
+  },
+  {
+    id: '10',
+    campaign: 'Email Newsletter Promotion',
+    platform: 'Email',
+    impressions: 45000,
+    clicks: 2250,
+    ctr: 5.0,
+    cost: 1200,
+    conversions: 189,
+    revenue: 9450,
+    status: 'active',
+    startDate: '2024-10-15',
+    endDate: '2024-12-15',
+    roi: 687.5
+  },
+  {
+    id: '11',
+    campaign: 'Influencer Partnership',
+    platform: 'Instagram',
+    impressions: 78000,
+    clicks: 3900,
+    ctr: 5.0,
+    cost: 6500,
+    conversions: 234,
+    revenue: 17550,
+    status: 'completed',
+    startDate: '2024-09-01',
+    endDate: '2024-10-31',
+    roi: 170.0
+  },
+  {
+    id: '12',
+    campaign: 'B2B Lead Generation',
+    platform: 'LinkedIn',
+    impressions: 28000,
+    clicks: 840,
+    ctr: 3.0,
+    cost: 5200,
+    conversions: 84,
+    revenue: 21000,
+    status: 'active',
+    startDate: '2024-11-10',
+    endDate: '2024-12-31',
+    roi: 303.8
+  },
+  {
+    id: '13',
+    campaign: 'Spring Sale 2024',
+    platform: 'Facebook',
+    impressions: 198000,
+    clicks: 7920,
+    ctr: 4.0,
+    cost: 5800,
+    conversions: 396,
+    revenue: 23760,
+    status: 'completed',
+    startDate: '2024-03-01',
+    endDate: '2024-05-31',
+    roi: 309.7
+  },
+  {
+    id: '14',
+    campaign: 'Customer Retention',
+    platform: 'Google Ads',
+    impressions: 56000,
+    clicks: 3360,
+    ctr: 6.0,
+    cost: 2400,
+    conversions: 168,
+    revenue: 12600,
+    status: 'active',
+    startDate: '2024-11-01',
+    endDate: '2024-12-31',
+    roi: 425.0
+  },
+  {
+    id: '15',
+    campaign: 'Local Business Promotion',
+    platform: 'Google Ads',
+    impressions: 34000,
+    clicks: 1700,
+    ctr: 5.0,
+    cost: 1800,
+    conversions: 85,
+    revenue: 6800,
+    status: 'paused',
+    startDate: '2024-10-01',
+    endDate: '2024-11-30',
+    roi: 277.8
+  },
+  {
+    id: '16',
+    campaign: 'Podcast Sponsorship',
+    platform: 'Spotify',
+    impressions: 67000,
+    clicks: 2010,
+    ctr: 3.0,
+    cost: 3500,
+    conversions: 101,
+    revenue: 10100,
+    status: 'active',
+    startDate: '2024-10-15',
+    endDate: '2024-12-15',
+    roi: 188.6
+  },
+  {
+    id: '17',
+    campaign: 'Cyber Monday Deal',
+    platform: 'Google Ads',
+    impressions: 289000,
+    clicks: 17340,
+    ctr: 6.0,
+    cost: 11500,
+    conversions: 1040,
+    revenue: 62400,
+    status: 'completed',
+    startDate: '2024-11-25',
+    endDate: '2024-12-02',
+    roi: 442.6
+  },
+  {
+    id: '18',
+    campaign: 'Social Media Contest',
+    platform: 'Instagram',
+    impressions: 145000,
+    clicks: 8700,
+    ctr: 6.0,
+    cost: 2200,
+    conversions: 435,
+    revenue: 13050,
+    status: 'completed',
+    startDate: '2024-08-15',
+    endDate: '2024-09-15',
+    roi: 493.2
+  },
+  {
+    id: '19',
+    campaign: 'Professional Services',
+    platform: 'LinkedIn',
+    impressions: 42000,
+    clicks: 1260,
+    ctr: 3.0,
+    cost: 6800,
+    conversions: 63,
+    revenue: 31500,
+    status: 'active',
+    startDate: '2024-10-01',
+    endDate: '2024-12-31',
+    roi: 363.2
+  },
+  {
+    id: '20',
+    campaign: 'Mobile Game Promotion',
+    platform: 'Facebook',
+    impressions: 234000,
+    clicks: 9360,
+    ctr: 4.0,
+    cost: 7200,
+    conversions: 468,
+    revenue: 14040,
+    status: 'active',
+    startDate: '2024-11-05',
+    endDate: '2024-12-31',
+    roi: 95.0
+  },
+  {
+    id: '21',
+    campaign: 'E-commerce Flash Sale',
+    platform: 'Google Ads',
+    impressions: 178000,
+    clicks: 8900,
+    ctr: 5.0,
+    cost: 6300,
+    conversions: 534,
+    revenue: 26700,
+    status: 'completed',
+    startDate: '2024-10-15',
+    endDate: '2024-10-17',
+    roi: 323.8
+  },
+  {
+    id: '22',
+    campaign: 'Newsletter Signup Drive',
+    platform: 'Facebook',
+    impressions: 98000,
+    clicks: 3920,
+    ctr: 4.0,
+    cost: 2800,
+    conversions: 196,
+    revenue: 5880,
+    status: 'paused',
+    startDate: '2024-09-15',
+    endDate: '2024-11-15',
+    roi: 110.0
+  },
+  {
+    id: '23',
+    campaign: 'Premium Service Launch',
+    platform: 'LinkedIn',
+    impressions: 38000,
+    clicks: 1140,
+    ctr: 3.0,
+    cost: 8500,
+    conversions: 57,
+    revenue: 28500,
+    status: 'active',
+    startDate: '2024-11-01',
+    endDate: '2024-12-31',
+    roi: 235.3
+  },
+  {
+    id: '24',
+    campaign: 'Holiday Gift Guide',
+    platform: 'Instagram',
+    impressions: 167000,
+    clicks: 10020,
+    ctr: 6.0,
+    cost: 4200,
+    conversions: 501,
+    revenue: 25050,
+    status: 'active',
+    startDate: '2024-11-15',
+    endDate: '2024-12-24',
+    roi: 496.4
+  },
+  {
+    id: '25',
+    campaign: 'Webinar Registration',
+    platform: 'LinkedIn',
+    impressions: 52000,
+    clicks: 1560,
+    ctr: 3.0,
+    cost: 3200,
+    conversions: 78,
+    revenue: 15600,
+    status: 'completed',
+    startDate: '2024-09-01',
+    endDate: '2024-09-30',
+    roi: 387.5
   }
 ];
 
@@ -287,4 +544,33 @@ export const getDateRangeData = (startDate: string, endDate: string) => {
     
     return campaignStart <= filterEnd && campaignEnd >= filterStart;
   });
+};
+
+// Get unique platforms from campaign data
+export const getAvailablePlatforms = (): string[] => {
+  const platforms = [...new Set(campaignData.map(campaign => campaign.platform))];
+  return platforms.sort();
+};
+
+// Campaign statistics
+export const getCampaignStats = () => {
+  const totalRevenue = campaignData.reduce((sum, campaign) => sum + campaign.revenue, 0);
+  const totalCost = campaignData.reduce((sum, campaign) => sum + campaign.cost, 0);
+  const totalConversions = campaignData.reduce((sum, campaign) => sum + campaign.conversions, 0);
+  const totalImpressions = campaignData.reduce((sum, campaign) => sum + campaign.impressions, 0);
+  const totalClicks = campaignData.reduce((sum, campaign) => sum + campaign.clicks, 0);
+  
+  return {
+    totalRevenue,
+    totalCost,
+    totalConversions,
+    totalImpressions,
+    totalClicks,
+    averageROI: ((totalRevenue - totalCost) / totalCost * 100),
+    averageCTR: (totalClicks / totalImpressions * 100),
+    totalCampaigns: campaignData.length,
+    activeCampaigns: campaignData.filter(c => c.status === 'active').length,
+    completedCampaigns: campaignData.filter(c => c.status === 'completed').length,
+    pausedCampaigns: campaignData.filter(c => c.status === 'paused').length
+  };
 };
