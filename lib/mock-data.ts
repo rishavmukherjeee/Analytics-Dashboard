@@ -39,7 +39,7 @@ export interface TableRow {
 export const metricsData: MetricData[] = [
   {
     label: "Total Revenue",
-    value: "$1,247,820",
+    value: "$812,000",
     change: 15.8,
     changeLabel: "vs last month",
     icon: "DollarSign",
