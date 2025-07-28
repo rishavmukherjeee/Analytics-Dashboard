@@ -72,18 +72,54 @@ export const metricsData: MetricData[] = [
 ];
 
 export const revenueData: ChartDataPoint[] = [
-  { name: 'Jan', revenue: 45000, users: 8400, conversions: 980, impressions: 245000, clicks: 12250, cost: 8500 },
-  { name: 'Feb', revenue: 52000, users: 9200, conversions: 1120, impressions: 280000, clicks: 14000, cost: 9200 },
-  { name: 'Mar', revenue: 48000, users: 8800, conversions: 1050, impressions: 260000, clicks: 13000, cost: 8800 },
-  { name: 'Apr', revenue: 61000, users: 10500, conversions: 1340, impressions: 320000, clicks: 16000, cost: 10500 },
-  { name: 'May', revenue: 55000, users: 9800, conversions: 1220, impressions: 290000, clicks: 14500, cost: 9800 },
-  { name: 'Jun', revenue: 67000, users: 11200, conversions: 1450, impressions: 350000, clicks: 17500, cost: 11200 },
-  { name: 'Jul', revenue: 72000, users: 12100, conversions: 1580, impressions: 380000, clicks: 19000, cost: 12100 },
-  { name: 'Aug', revenue: 69000, users: 11800, conversions: 1520, impressions: 365000, clicks: 18250, cost: 11800 },
-  { name: 'Sep', revenue: 78000, users: 13200, conversions: 1680, impressions: 410000, clicks: 20500, cost: 13200 },
-  { name: 'Oct', revenue: 82000, users: 14100, conversions: 1750, impressions: 440000, clicks: 22000, cost: 14100 },
-  { name: 'Nov', revenue: 89000, users: 15000, conversions: 1890, impressions: 470000, clicks: 23500, cost: 15000 },
-  { name: 'Dec', revenue: 94000, users: 15800, conversions: 2010, impressions: 495000, clicks: 24750, cost: 15800 }
+  {
+    name: 'Jan', revenue: 45000, users: 8400, conversions: 980, impressions: 245000, clicks: 12250, cost: 8500,
+    value: 0
+  },
+  {
+    name: 'Feb', revenue: 52000, users: 9200, conversions: 1120, impressions: 280000, clicks: 14000, cost: 9200,
+    value: 0
+  },
+  {
+    name: 'Mar', revenue: 48000, users: 8800, conversions: 1050, impressions: 260000, clicks: 13000, cost: 8800,
+    value: 0
+  },
+  {
+    name: 'Apr', revenue: 61000, users: 10500, conversions: 1340, impressions: 320000, clicks: 16000, cost: 10500,
+    value: 0
+  },
+  {
+    name: 'May', revenue: 55000, users: 9800, conversions: 1220, impressions: 290000, clicks: 14500, cost: 9800,
+    value: 0
+  },
+  {
+    name: 'Jun', revenue: 67000, users: 11200, conversions: 1450, impressions: 350000, clicks: 17500, cost: 11200,
+    value: 0
+  },
+  {
+    name: 'Jul', revenue: 72000, users: 12100, conversions: 1580, impressions: 380000, clicks: 19000, cost: 12100,
+    value: 0
+  },
+  {
+    name: 'Aug', revenue: 69000, users: 11800, conversions: 1520, impressions: 365000, clicks: 18250, cost: 11800,
+    value: 0
+  },
+  {
+    name: 'Sep', revenue: 78000, users: 13200, conversions: 1680, impressions: 410000, clicks: 20500, cost: 13200,
+    value: 0
+  },
+  {
+    name: 'Oct', revenue: 82000, users: 14100, conversions: 1750, impressions: 440000, clicks: 22000, cost: 14100,
+    value: 0
+  },
+  {
+    name: 'Nov', revenue: 89000, users: 15000, conversions: 1890, impressions: 470000, clicks: 23500, cost: 15000,
+    value: 0
+  },
+  {
+    name: 'Dec', revenue: 94000, users: 15800, conversions: 2010, impressions: 495000, clicks: 24750, cost: 15800,
+    value: 0
+  }
 ];
 
 export const platformData: ChartDataPoint[] = [
@@ -548,7 +584,7 @@ export const getDateRangeData = (startDate: string, endDate: string) => {
 
 // Get unique platforms from campaign data
 export const getAvailablePlatforms = (): string[] => {
-  const platforms = [...new Set(campaignData.map(campaign => campaign.platform))];
+  const platforms = Array.from(new Set(campaignData.map(campaign => campaign.platform)));
   return platforms.sort();
 };
 

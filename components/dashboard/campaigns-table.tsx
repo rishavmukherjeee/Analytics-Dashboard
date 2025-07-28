@@ -11,7 +11,7 @@ import {
   TableCell,
   TableHead,
   TableHeader,
-  TableRow,
+  TableRow
 } from "@/components/ui/table";
 import {
   Select,
@@ -27,11 +27,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Search, Filter, MoreHorizontal, ArrowUpDown, TrendingUp, TrendingDown } from "lucide-react";
-import { campaignData, type TableRow } from "@/lib/mock-data";
+import { campaignData, type TableRow as CampaignRow } from "@/lib/mock-data";
 import { ExportDialog } from "./export-dialog";
 import { DateRangePicker } from "./date-range-picker";
 
-type SortField = keyof TableRow;
+type SortField = keyof CampaignRow;
 type SortDirection = 'asc' | 'desc';
 
 export function CampaignsTable() {
@@ -63,8 +63,8 @@ export function CampaignsTable() {
     });
 
     filtered.sort((a, b) => {
-      const aValue = a[sortField];
-      const bValue = b[sortField];
+      const aValue = a[sortField as keyof CampaignRow];
+      const bValue = b[sortField as keyof CampaignRow];
       
       if (typeof aValue === 'string' && typeof bValue === 'string') {
         return sortDirection === 'asc' 
@@ -295,8 +295,7 @@ export function CampaignsTable() {
               {paginatedData.map((campaign, index) => (
                 <TableRow 
                   key={campaign.id} 
-                  className="hover:bg-muted/30 transition-all duration-200 group"
-                  style={{ animationDelay: `${index * 50}ms` }}
+                  className="hover:bg-muted/30 transition-all duration-200 group animate-in fade-in slide-in-from-bottom-2"
                 >
                   <TableCell className="font-medium">
                     <div className="flex flex-col">
@@ -370,7 +369,7 @@ export function CampaignsTable() {
               </Button>
               <div className="flex items-center space-x-1">
                 {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
-                  let pageNum;
+                  let pageNum:number;
                   if (totalPages <= 5) {
                     pageNum = i + 1;
                   } else if (currentPage <= 3) {
