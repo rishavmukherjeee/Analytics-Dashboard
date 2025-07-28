@@ -135,12 +135,12 @@ http://localhost:3000
 ## 📞 Contact
 
 **Developer**: Rishav Mukherjee  
-**Portfolio**: [rishavmukherjee.dev](https://rishavmukherjee.me)  
-**LinkedIn**: [linkedin.com/in/rishavmukherjee](https://linkedin.com/in/rishavmukherjeee)  
-**Email**: rishavmukherjee@gmail.com
+**Portfolio**: [rishavmukherjee.me](https://rishavmukherjee.me)  
+**LinkedIn**: [linkedin.com/in/rishavmukherjeee](https://linkedin.com/in/rishavmukherjeee)  
+**Email**: rishavmukherjee11@gmail.com
 
 ---
 
-*Built with ❤️ using AI-assisted development for rapid, high-quality delivery*
+*Built with using AI-assisted development for rapid, high-quality delivery*
 
 
