@@ -2,8 +2,7 @@
 
 A modern, AI-powered analytics dashboard built for digital marketing agencies. This project showcases rapid development using cutting-edge AI tools while maintaining beautiful UI design and robust functionality.
 
-![Dashboard Preview]([(https://iili.io/FvybNMN.th.png)](https://freeimage.host/i/FvybNMN))
-
+[![FvybNMN.th.png](https://iili.io/FvybNMN.th.png)](https://freeimage.host/i/FvybNMN)
 ## 🚀 Live Demo
 
 **[View Live Dashboard](https://analytics-dashboard-5jzsvhbxc-rishavmukherjeees-projects.vercel.app/)**
