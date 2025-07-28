@@ -90,7 +90,7 @@ export function PlatformChart() {
           </div>
           
           <div className="flex items-center gap-2">
-            <Button variant="ghost" size="icon" className="h-8 w-8" onClick={toggleFullscreen}>
+            <Button variant="ghost" size="icon" className="h-8 w-8 hidden md:flex" onClick={toggleFullscreen}>
               {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
             </Button>
             <Button variant="ghost" size="icon" className="h-8 w-8" onClick={handleDownload}>

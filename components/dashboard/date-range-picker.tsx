@@ -82,9 +82,9 @@ export function DateRangePicker({ onDateRangeChange, className }: DateRangePicke
   };
 
   return (
-    <div className={cn("flex items-center gap-2", className)}>
+    <div className={cn("flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full", className)}>
       <Select value={preset} onValueChange={handlePresetChange}>
-        <SelectTrigger className="w-40">
+        <SelectTrigger className="w-full sm:w-40">
           <SelectValue />
         </SelectTrigger>
         <SelectContent>
@@ -97,18 +97,20 @@ export function DateRangePicker({ onDateRangeChange, className }: DateRangePicke
       </Select>
 
       {preset === "custom" && (
-        <>
+        <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
           <Popover>
             <PopoverTrigger asChild>
               <Button
                 variant="outline"
                 className={cn(
-                  "w-40 justify-start text-left font-normal",
+                  "w-full sm:w-40 justify-start text-left font-normal",
                   !startDate && "text-muted-foreground"
                 )}
               >
-                <CalendarIcon className="mr-2 h-4 w-4" />
-                {startDate ? format(startDate, "PPP") : "Start date"}
+                <CalendarIcon className="mr-2 h-4 w-4 flex-shrink-0" />
+                <span className="truncate">
+                  {startDate ? format(startDate, "MMM d, yyyy") : "Start date"}
+                </span>
               </Button>
             </PopoverTrigger>
             <PopoverContent className="w-auto p-0" align="start">
@@ -126,12 +128,14 @@ export function DateRangePicker({ onDateRangeChange, className }: DateRangePicke
               <Button
                 variant="outline"
                 className={cn(
-                  "w-40 justify-start text-left font-normal",
+                  "w-full sm:w-40 justify-start text-left font-normal",
                   !endDate && "text-muted-foreground"
                 )}
               >
-                <CalendarIcon className="mr-2 h-4 w-4" />
-                {endDate ? format(endDate, "PPP") : "End date"}
+                <CalendarIcon className="mr-2 h-4 w-4 flex-shrink-0" />
+                <span className="truncate">
+                  {endDate ? format(endDate, "MMM d, yyyy") : "End date"}
+                </span>
               </Button>
             </PopoverTrigger>
             <PopoverContent className="w-auto p-0" align="start">
@@ -143,7 +147,7 @@ export function DateRangePicker({ onDateRangeChange, className }: DateRangePicke
               />
             </PopoverContent>
           </Popover>
-        </>
+        </div>
       )}
     </div>
   );

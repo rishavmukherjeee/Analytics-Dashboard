@@ -147,7 +147,7 @@ export function CampaignsTable() {
   return (
     <Card className="shadow-sm border-0 bg-gradient-to-br from-white to-gray-50/30 dark:from-gray-900 dark:to-gray-800/30">
       <CardHeader className="pb-4">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+        <div className="flex flex-col gap-4">
           <div>
             <CardTitle className="text-xl font-semibold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
               Campaign Performance
@@ -157,9 +157,13 @@ export function CampaignsTable() {
             </p>
           </div>
           
-          <div className="flex flex-col sm:flex-row gap-3">
-            <DateRangePicker onDateRangeChange={handleDateRangeChange} />
-            <ExportDialog data={filteredAndSortedData} filename="campaign-performance" />
+          <div className="flex flex-col gap-3 w-full">
+            <div className="w-full overflow-hidden">
+              <DateRangePicker onDateRangeChange={handleDateRangeChange} className="w-full max-w-full" />
+            </div>
+            <div className="w-full sm:w-auto">
+              <ExportDialog data={filteredAndSortedData} filename="campaign-performance" />
+            </div>
           </div>
         </div>
         
@@ -202,95 +206,96 @@ export function CampaignsTable() {
       </CardHeader>
       
       <CardContent className="p-0">
-        <div className="rounded-lg border border-border/50 mx-6 mb-6 overflow-hidden bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm">
-          <Table>
-            <TableHeader>
-              <TableRow className="bg-muted/30 hover:bg-muted/50">
-                <TableHead className="font-semibold">
-                  <Button
-                    variant="ghost"
-                    onClick={() => handleSort('campaign')}
-                    className="h-auto p-0 font-semibold hover:bg-transparent hover:text-primary"
-                  >
-                    Campaign
-                    <ArrowUpDown className="ml-2 h-4 w-4" />
-                  </Button>
-                </TableHead>
-                <TableHead className="font-semibold">Platform</TableHead>
-                <TableHead className="text-right font-semibold">
-                  <Button
-                    variant="ghost"
-                    onClick={() => handleSort('impressions')}
-                    className="h-auto p-0 font-semibold hover:bg-transparent hover:text-primary"
-                  >
-                    Impressions
-                    <ArrowUpDown className="ml-2 h-4 w-4" />
-                  </Button>
-                </TableHead>
-                <TableHead className="text-right font-semibold">
-                  <Button
-                    variant="ghost"
-                    onClick={() => handleSort('clicks')}
-                    className="h-auto p-0 font-semibold hover:bg-transparent hover:text-primary"
-                  >
-                    Clicks
-                    <ArrowUpDown className="ml-2 h-4 w-4" />
-                  </Button>
-                </TableHead>
-                <TableHead className="text-right font-semibold">
-                  <Button
-                    variant="ghost"
-                    onClick={() => handleSort('ctr')}
-                    className="h-auto p-0 font-semibold hover:bg-transparent hover:text-primary"
-                  >
-                    CTR
-                    <ArrowUpDown className="ml-2 h-4 w-4" />
-                  </Button>
-                </TableHead>
-                <TableHead className="text-right font-semibold">
-                  <Button
-                    variant="ghost"
-                    onClick={() => handleSort('cost')}
-                    className="h-auto p-0 font-semibold hover:bg-transparent hover:text-primary"
-                  >
-                    Cost
-                    <ArrowUpDown className="ml-2 h-4 w-4" />
-                  </Button>
-                </TableHead>
-                <TableHead className="text-right font-semibold">
-                  <Button
-                    variant="ghost"
-                    onClick={() => handleSort('conversions')}
-                    className="h-auto p-0 font-semibold hover:bg-transparent hover:text-primary"
-                  >
-                    Conversions
-                    <ArrowUpDown className="ml-2 h-4 w-4" />
-                  </Button>
-                </TableHead>
-                <TableHead className="text-right font-semibold">
-                  <Button
-                    variant="ghost"
-                    onClick={() => handleSort('revenue')}
-                    className="h-auto p-0 font-semibold hover:bg-transparent hover:text-primary"
-                  >
-                    Revenue
-                    <ArrowUpDown className="ml-2 h-4 w-4" />
-                  </Button>
-                </TableHead>
-                <TableHead className="text-right font-semibold">
-                  <Button
-                    variant="ghost"
-                    onClick={() => handleSort('roi')}
-                    className="h-auto p-0 font-semibold hover:bg-transparent hover:text-primary"
-                  >
-                    ROI
-                    <ArrowUpDown className="ml-2 h-4 w-4" />
-                  </Button>
-                </TableHead>
-                <TableHead className="font-semibold">Status</TableHead>
-                <TableHead className="w-[70px]"></TableHead>
-              </TableRow>
-            </TableHeader>
+        <div className="mx-3 sm:mx-6 mb-6 overflow-hidden bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-lg border border-border/50">
+          <div className="overflow-x-auto">
+            <Table>
+              <TableHeader>
+                <TableRow className="bg-muted/30 hover:bg-muted/50">
+                  <TableHead className="font-semibold min-w-[180px]">
+                    <Button
+                      variant="ghost"
+                      onClick={() => handleSort('campaign')}
+                      className="h-auto p-0 font-semibold hover:bg-transparent hover:text-primary"
+                    >
+                      Campaign
+                      <ArrowUpDown className="ml-2 h-4 w-4" />
+                    </Button>
+                  </TableHead>
+                  <TableHead className="font-semibold min-w-[100px]">Platform</TableHead>
+                  <TableHead className="text-right font-semibold min-w-[100px]">
+                    <Button
+                      variant="ghost"
+                      onClick={() => handleSort('impressions')}
+                      className="h-auto p-0 font-semibold hover:bg-transparent hover:text-primary"
+                    >
+                      Impressions
+                      <ArrowUpDown className="ml-2 h-4 w-4" />
+                    </Button>
+                  </TableHead>
+                  <TableHead className="text-right font-semibold min-w-[80px]">
+                    <Button
+                      variant="ghost"
+                      onClick={() => handleSort('clicks')}
+                      className="h-auto p-0 font-semibold hover:bg-transparent hover:text-primary"
+                    >
+                      Clicks
+                      <ArrowUpDown className="ml-2 h-4 w-4" />
+                    </Button>
+                  </TableHead>
+                  <TableHead className="text-right font-semibold min-w-[70px]">
+                    <Button
+                      variant="ghost"
+                      onClick={() => handleSort('ctr')}
+                      className="h-auto p-0 font-semibold hover:bg-transparent hover:text-primary"
+                    >
+                      CTR
+                      <ArrowUpDown className="ml-2 h-4 w-4" />
+                    </Button>
+                  </TableHead>
+                  <TableHead className="text-right font-semibold min-w-[80px]">
+                    <Button
+                      variant="ghost"
+                      onClick={() => handleSort('cost')}
+                      className="h-auto p-0 font-semibold hover:bg-transparent hover:text-primary"
+                    >
+                      Cost
+                      <ArrowUpDown className="ml-2 h-4 w-4" />
+                    </Button>
+                  </TableHead>
+                  <TableHead className="text-right font-semibold min-w-[100px]">
+                    <Button
+                      variant="ghost"
+                      onClick={() => handleSort('conversions')}
+                      className="h-auto p-0 font-semibold hover:bg-transparent hover:text-primary"
+                    >
+                      Conversions
+                      <ArrowUpDown className="ml-2 h-4 w-4" />
+                    </Button>
+                  </TableHead>
+                  <TableHead className="text-right font-semibold min-w-[90px]">
+                    <Button
+                      variant="ghost"
+                      onClick={() => handleSort('revenue')}
+                      className="h-auto p-0 font-semibold hover:bg-transparent hover:text-primary"
+                    >
+                      Revenue
+                      <ArrowUpDown className="ml-2 h-4 w-4" />
+                    </Button>
+                  </TableHead>
+                  <TableHead className="text-right font-semibold min-w-[80px]">
+                    <Button
+                      variant="ghost"
+                      onClick={() => handleSort('roi')}
+                      className="h-auto p-0 font-semibold hover:bg-transparent hover:text-primary"
+                    >
+                      ROI
+                      <ArrowUpDown className="ml-2 h-4 w-4" />
+                    </Button>
+                  </TableHead>
+                  <TableHead className="font-semibold min-w-[100px]">Status</TableHead>
+                  <TableHead className="w-[70px]"></TableHead>
+                </TableRow>
+              </TableHeader>
             <TableBody>
               {paginatedData.map((campaign, index) => (
                 <TableRow 
@@ -349,35 +354,36 @@ export function CampaignsTable() {
             </TableBody>
           </Table>
         </div>
+      </div>
 
         {totalPages > 1 && (
-          <div className="flex items-center justify-between px-6 pb-6">
-            <div className="text-sm text-muted-foreground">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 px-3 sm:px-6 pb-6">
+            <div className="text-sm text-muted-foreground order-2 sm:order-1">
               Showing <span className="font-medium">{((currentPage - 1) * itemsPerPage) + 1}</span> to{' '}
               <span className="font-medium">{Math.min(currentPage * itemsPerPage, filteredAndSortedData.length)}</span> of{' '}
               <span className="font-medium">{filteredAndSortedData.length}</span> results
             </div>
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2 order-1 sm:order-2">
               <Button
                 variant="outline"
                 size="sm"
                 onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
                 disabled={currentPage === 1}
-                className="transition-all duration-200 hover:scale-105"
+                className="transition-all duration-200 hover:scale-105 text-xs px-2"
               >
                 Previous
               </Button>
               <div className="flex items-center space-x-1">
-                {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+                {Array.from({ length: Math.min(3, totalPages) }, (_, i) => {
                   let pageNum:number;
-                  if (totalPages <= 5) {
+                  if (totalPages <= 3) {
                     pageNum = i + 1;
-                  } else if (currentPage <= 3) {
+                  } else if (currentPage <= 2) {
                     pageNum = i + 1;
-                  } else if (currentPage >= totalPages - 2) {
-                    pageNum = totalPages - 4 + i;
+                  } else if (currentPage >= totalPages - 1) {
+                    pageNum = totalPages - 2 + i;
                   } else {
-                    pageNum = currentPage - 2 + i;
+                    pageNum = currentPage - 1 + i;
                   }
                   
                   return (
@@ -386,7 +392,7 @@ export function CampaignsTable() {
                       variant={currentPage === pageNum ? "default" : "outline"}
                       size="sm"
                       onClick={() => setCurrentPage(pageNum)}
-                      className="w-9 h-9 p-0 transition-all duration-200 hover:scale-105"
+                      className="w-8 h-8 p-0 transition-all duration-200 hover:scale-105 text-xs"
                     >
                       {pageNum}
                     </Button>
@@ -398,7 +404,7 @@ export function CampaignsTable() {
                 size="sm"
                 onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
                 disabled={currentPage === totalPages}
-                className="transition-all duration-200 hover:scale-105"
+                className="transition-all duration-200 hover:scale-105 text-xs px-2"
               >
                 Next
               </Button>

@@ -14,23 +14,11 @@ import {
 } from "recharts";
 import { revenueData } from "@/lib/mock-data";
 import { BarChart3, Download, Maximize2, Minimize2 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export function PerformanceChart() {
   const [metric, setMetric] = useState("both");
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-  
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
   
   const metrics = [
     { label: "Both", value: "both" },
@@ -61,13 +49,19 @@ export function PerformanceChart() {
   };
 
   const toggleFullscreen = () => {
-    if (!isMobile) {
-      setIsFullscreen(!isFullscreen);
-    }
+    setIsFullscreen(!isFullscreen);
   };
 
   return (
-    <Card className="col-span-3 shadow-sm border-0 bg-gradient-to-br from-white to-emerald-50/30 dark:from-gray-900 dark:to-emerald-900/10">
+    <>
+      {isFullscreen && (
+        <div className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40" onClick={toggleFullscreen} />
+      )}
+      <Card className={`shadow-sm border-0 bg-gradient-to-br from-white to-emerald-50/30 dark:from-gray-900 dark:to-emerald-900/10 ${
+        isFullscreen 
+          ? 'fixed inset-4 z-50 col-span-1 overflow-y-auto' 
+          : 'col-span-3'
+      }`}>
       <CardHeader className="pb-4">
         <div className="flex items-center justify-between">
           <div className="space-y-1">
@@ -94,10 +88,10 @@ export function PerformanceChart() {
                 </Button>
               ))}
             </div>
-            <Button variant="ghost" size="icon" className="h-8 w-8">
-              <Maximize2 className="h-4 w-4" />
+            <Button variant="ghost" size="icon" className="h-8 w-8 hidden md:flex" onClick={toggleFullscreen}>
+              {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
             </Button>
-            <Button variant="ghost" size="icon" className="h-8 w-8">
+            <Button variant="ghost" size="icon" className="h-8 w-8" onClick={handleDownload}>
               <Download className="h-4 w-4" />
             </Button>
           </div>
@@ -105,7 +99,7 @@ export function PerformanceChart() {
       </CardHeader>
       
       <CardContent className="pb-6">
-        <ResponsiveContainer width="100%" height={350}>
+        <ResponsiveContainer width="100%" height={isFullscreen ? 450 : 350}>
           <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" className="opacity-20" />
             <XAxis
@@ -172,5 +166,6 @@ export function PerformanceChart() {
         </ResponsiveContainer>
       </CardContent>
     </Card>
+    </>
   );
 }
