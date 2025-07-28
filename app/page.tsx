@@ -49,7 +49,7 @@ export default function Dashboard() {
                     key={metric.label}
                     {...metric}
                     className="animate-in fade-in-50 duration-500"
-                    style={{ animationDelay: `${index * 100}ms` }}
+                   
                   />
                 ))
               )}
